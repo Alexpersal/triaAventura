@@ -7,11 +7,12 @@
     </title>
     <style>
         body {
-            background-color: cadetblue;
+            background-image: url(question.jpg);
             display: flex;
             align-items: center;
             flex-direction: column;
             text-align: center;
+            align-content: space-around;
             padding: 200px;
             font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 24px;
@@ -27,53 +28,78 @@
         footer {
             display: flex;
             justify-content: space-evenly;
-            margin: 10px;
+            margin: 50px;
             /*coloca margen a los botones*/
             
         }
 
         .intro {
-            background-color: darkgrey;
+            
             font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             
         }
 
         .pag {
-            background-color: aqua;
             padding: 20px 0px;
-                      
-
+            
         }
 
         #texto {
-            background-color: rgb(206, 112, 112);
+            background-color: darkgrey;
             padding: 20px 0px;
             width: 400px;
+            border: 1px solid black;
             
         }
 
         .buttonNo {
             color: red;
-            width: 60px;
+            width: 100px;
+            height: 50;
             cursor: pointer;
             font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 18px;
             font-weight: bolder;
+            border-radius: 10px;
+            
             
         }
         .buttonSi {
             color: rgb(19, 121, 41);
-            width: 60px;
+            background-color: rgb(216, 209, 209);
+            width: 100px;
+            height: 50;
             cursor: pointer;
             font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 18px;
             font-weight: bolder;
+            border-radius: 10px;
+
             
         }
+        #nombre{
+            background-color: darkgrey;
+            padding: 20px 0px;
+            width: 400px;
+            border: 1px solid black;
+            
+        }
+        section{
+            
+            display: flex;
+            flex-direction: row;
+            
+        }
+        #camino{
+            background-color: darkgrey;
+            padding: 20px 0px;
+            border: 1px solid black;
+        }
+
     </style>
 </head>
 
-<body>
+<body onload="emergente();">
     <header>
         <div class="intro">
             Bienvenidos a vuestra aventura, en la que podréis elegir vuestro camino.
@@ -81,13 +107,17 @@
     </header>
     <main>
         <header>
-            <h2>Estas en la página:</h2>
+            <div>Estas en la página:</div>
             <div class="pag"></div>
         </header>
-        
-            
-            <section id="texto">cuadro donde se muestra el texto</section>
-    
+        <section>
+            <div id="texto"></div>
+            <div class = "jocAñadido">
+                <div id="nombre"></div>
+                <div id="camino">patata</div>
+            </div>
+        </section>
+
         <footer>
             <button class="buttonNo" onclick="no()">NO</button>
             <button class="buttonSi" onclick="si()">SI</button>
@@ -107,16 +137,15 @@
         let pagina = 0;
         let texto = document.querySelector('#texto'); // crea variable texto para ubicarla en el cuadro texto del html
         texto.textContent = historia[pagina].text; //mete dentro del cuadro la informacón de texto guardada
-
-
         let pag = document.querySelector('.pag'); // crea la variable pag para ubicarla en la cabecera donde nos muestra la pagina en que estamos
         pag.textContent = pagina; // nos muestra la pagina en la que estamos 
         //pag.textContent = historia.length;
-
+        
 
         function si() {
             pagina = historia[pagina].si;
             texto.textContent = historia[pagina].text;
+            
             pag.textContent = pagina;
         }
         function no() {
@@ -124,6 +153,13 @@
             texto.textContent = historia[pagina].text;
             pag.textContent = pagina;
         }
+        function emergente(){
+            let person = prompt ("Introduzca su nombre");
+            if (person != null){
+            document.getElementById("nombre").innerHTML = "Nombre: " + person;
+            }
+        }
+        
     </script>
 </body>
 
