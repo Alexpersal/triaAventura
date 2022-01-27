@@ -48,6 +48,7 @@
             background-color: darkgrey;
             padding: 20px 0px;
             width: 400px;
+            
             border: 1px solid black;
             
         }
@@ -139,19 +140,26 @@
         texto.textContent = historia[pagina].text; //mete dentro del cuadro la informacón de texto guardada
         let pag = document.querySelector('.pag'); // crea la variable pag para ubicarla en la cabecera donde nos muestra la pagina en que estamos
         pag.textContent = pagina; // nos muestra la pagina en la que estamos 
-        //pag.textContent = historia.length;
+        let cami = document.querySelector('#camino');
+        let acumulado = [pagina];//guardamos las paginas en el array para mostrar despues
+        camino.textContent = 'Recorrido: ' + acumulado;//impresion en pantalla del array del recorrido en el cuadro del camino
         
 
         function si() {
             pagina = historia[pagina].si;
             texto.textContent = historia[pagina].text;
-            
             pag.textContent = pagina;
+            camino.textContent = pagina;
+            acumulado.push(pagina);
+            camino.textContent = 'Recorrido: ' + acumulado;
         }
         function no() {
             pagina = historia[pagina].no;
             texto.textContent = historia[pagina].text;
             pag.textContent = pagina;
+            camino.textContent = pagina;
+            acumulado.push(pagina);
+            camino.textContent = 'Recorrido: ' + acumulado;
         }
         function emergente(){
             let person = prompt ("Introduzca su nombre");
